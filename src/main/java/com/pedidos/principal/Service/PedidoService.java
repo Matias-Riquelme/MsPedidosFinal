@@ -19,8 +19,8 @@ public class PedidoService {
     private RestTemplate restTemplate;
 
 
-    public String infoPedido(int id){
-        String url = "http://localhost:8081/traerUsuario/" + id;
+    public String infoPedido(String correo){
+        String url = "http://localhost:8082/usuarios/" + correo;
         String data = restTemplate.getForObject(url, String.class);
 
         return "{\"PEDIDO\":" + data + "}";

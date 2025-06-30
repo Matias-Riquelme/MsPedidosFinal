@@ -78,7 +78,15 @@ public class PedidoController {
         return ResponseEntity.badRequest().body(resultado); // 400
     }
 
-
+    @Operation(summary = "Obtener información del pedido desde usuarios (conexión entre microservicios)")
+    @GetMapping("/infoPedido/{correo}")
+    public ResponseEntity<String> infoPedido(@PathVariable String correo) {
+        String pedido = pedidoService.infoPedido(correo);
+        if (pedido != null) {
+            return ResponseEntity.ok(pedido); // 200 OK
+        }
+        return ResponseEntity.notFound().build(); // 404 Not Found
+    }
     
 
 }
